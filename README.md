@@ -95,6 +95,6 @@ done.
 
 ### Example Result view
 
-| Hostname | IP Address    | Up Time    | CPU Usage Percentage  | Disk Usage Percentage | Memory Usage Percentage | Load Average 1 | Load Average 5 | Load average 15 |
-| -------- | ------------- | ---------- | --------------------- | --------------------- | ----------------------- | -------------- | -------------- | --------------- |
-| office   | 192.168.1.116 | 119h45m38s | 5.34 % out of 8 cores | 66.62 % out of 109GGB | 30 % out of 15.5GGB     | 0.41           | 0.65           | 0.78            |
+| Hostname | IP Address    | Up Time   | CPU Usage             | Disk Usage            | Memory Usage        | Load Average     |
+| -------- | ------------- | --------- | --------------------- | --------------------- | ------------------- | ---------------- |
+| office   | 192.168.1.116 | 171h12m6s | 2.90 % out of 8 cores | 87.55 % out of 109GGB | 26 % out of 15.5GGB | 1.15 ,1.09 ,0.76 |
