@@ -3,8 +3,11 @@
     path: ../result.md
     state: touch
 
+- name: Adding title to result file
+  shell: echo -e "# Servers Overview\n## `date`\n" > ../result.md
+
 - name: Writing header to result file
-  shell: head -n2 ../markdown/$(ls -l ../markdown/ | tail -n1 | rev | cut -d ' ' -f 1 | rev) > ../result.md
+  shell: head -n2 ../markdown/$(ls -l ../markdown/ | tail -n1 | rev | cut -d ' ' -f 1 | rev) >> ../result.md
 
 - name: List of markdown files
   shell: |
