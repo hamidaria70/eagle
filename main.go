@@ -54,15 +54,13 @@ func cpuUsage() (string, string) {
 	return percentageCpu, cpuCores
 }
 
-func loadAvarage() (string, string, string) {
+func loadAvarage() string {
 	load, err := loadavg.Get()
 	checkError(err)
 
-	loadAverage1 := fmt.Sprintf("%.2f", float64(load.Loadavg1))
-	loadAverage5 := fmt.Sprintf("%.2f", float64(load.Loadavg5))
-	loadAverage15 := fmt.Sprintf("%.2f", float64(load.Loadavg15))
+	loadAverage := fmt.Sprintf("%.2f ,%.2f ,%.2f", float64(load.Loadavg1), float64(load.Loadavg5), float64(load.Loadavg15))
 
-	return loadAverage1, loadAverage5, loadAverage15
+	return loadAverage
 }
 
 func upTime() time.Duration {
@@ -82,16 +80,16 @@ func diskUsage() (string, string) {
 
 func markdownGenerator(hostname string, ip, uptime string, percentagecpu string, cpuCores string,
 	percentagedisk string, disksize string, percentagememory string, totalmemory string,
-	loadavarage1 string, loadaverage5 string, loadaverage15 string) {
+	loadavarage string) {
 	percentagememory = fmt.Sprintf("%v %% out of %vGB", percentagememory, totalmemory)
 	percentagedisk = fmt.Sprintf("%v %% out of %vGB", percentagedisk, disksize)
 	percentagecpu = fmt.Sprintf("%v %% out of %v cores", percentagecpu, cpuCores)
 	basicTable, _ := markdown.NewTableFormatterBuilder().
 		WithPrettyPrint().
-		Build("Hostname", "IP Address", "Up Time", "CPU Usage Percentage", "Disk Usage Percentage",
-			"Memory Usage Percentage", "Load Average 1", "Load Average 5", "Load average 15").
+		Build("Hostname", "IP Address", "Up Time", "CPU Usage", "Disk Usage",
+			"Memory Usage", "Load Average").
 		Format([][]string{
-			{hostname, ip, uptime, percentagecpu, percentagedisk, percentagememory, loadavarage1, loadaverage5, loadaverage15},
+			{hostname, ip, uptime, percentagecpu, percentagedisk, percentagememory, loadavarage},
 		})
 
 	f, err := os.Create("data.md")
@@ -125,12 +123,12 @@ func GetOutboundIP() net.IP {
 func main() {
 	totalmemory, percentagememory := memoryUsage()
 	percentagecpu, cpuCores := cpuUsage()
-	loadaverage1, loadaverage5, loadaverage15 := loadAvarage()
+	loadaverage := loadAvarage()
 	uptime := upTime().String()
 	disksize, percentagedisk := diskUsage()
 	hostname, _ := os.Hostname()
 	ip := GetOutboundIP().String()
 
 	markdownGenerator(hostname, ip, uptime, percentagecpu, cpuCores, percentagedisk, disksize,
-		percentagememory, totalmemory, loadaverage1, loadaverage5, loadaverage15)
+		percentagememory, totalmemory, loadaverage)
 }
