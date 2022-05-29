@@ -1,0 +1,9 @@
+- name: Removing eagle from remotes
+  file:
+    path: $HOME/eagle
+    state: absent
+
+- name: Removing markdown file from remotes
+  file:
+    path: $HOME/data.md
+    state: absent

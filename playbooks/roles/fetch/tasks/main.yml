@@ -1,0 +1,5 @@
+- name: Fetch from remote to server
+  fetch:
+    src: $HOME/data.md
+    dest: ../markdown/prefix-{{ inventory_hostname }}.md
+    flat: yes

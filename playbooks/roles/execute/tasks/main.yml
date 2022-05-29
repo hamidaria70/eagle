@@ -1,0 +1,2 @@
+- name: Executing eagle in remotes
+  shell: $HOME/eagle

@@ -1,0 +1,16 @@
+- name: Creating result file
+  file:
+    path: ../result.md
+    state: touch
+
+- name: Writing header to result file
+  shell: head -n2 ../markdown/$(ls -l ../markdown/ | tail -n1 | rev | cut -d ' ' -f 1 | rev) > ../result.md
+
+- name: List of markdown files
+  shell: |
+    LIST=$(ls -l ../markdown/*.md | rev | cut -d ' ' -f 1 | rev);
+    for NAME in ${LIST[@]};
+      do tail -n 1 $NAME >> ../result.md;
+    done
+  args:
+    executable: /bin/bash

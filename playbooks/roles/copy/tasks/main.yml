@@ -1,0 +1,7 @@
+- name: Copy eagle from ansible server to all servers
+  copy:
+    src: ../eagle
+    dest: $HOME/eagle
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: '0766'

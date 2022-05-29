@@ -1,0 +1,15 @@
+---
+  - name: Copy eagle
+    hosts: servers
+    remote_user: '{{ user }}'
+    roles:
+      - copy
+      - execute
+      - fetch
+      - cleanup-remote
+  - name: Host Markdown Generator
+    hosts: 127.0.0.1
+    connection: local
+    roles:
+      - merge
+      - cleanup-server

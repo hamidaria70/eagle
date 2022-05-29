@@ -1,0 +1,4 @@
+- name: Removing extra files and directories from server
+  file:
+    path: ../markdown
+    state: absent
