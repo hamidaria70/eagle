@@ -97,4 +97,4 @@ done.
 
 | Hostname | IP Address    | Up Time   | CPU Usage             | Disk Usage            | Memory Usage        | Load Average     |
 | -------- | ------------- | --------- | --------------------- | --------------------- | ------------------- | ---------------- |
-| office   | 192.168.1.116 | 171h12m6s | 2.90 % out of 8 cores | 87.55 % out of 109GGB | 26 % out of 15.5GGB | 1.15 ,1.09 ,0.76 |
+| office   | 192.168.1.116 | 171h12m6s | 2.90 % out of 8 cores | 87.55 % out of 109GB | 26 % out of 15.5GB | 1.15 ,1.09 ,0.76 |
